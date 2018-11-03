@@ -18,7 +18,7 @@
 ***NOTE:*** If you want to help contribute, please look at the original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first!<br />
 ***NOTE:*** If you want to help contribute, please look at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) first!<br />
 
-***NOTE:*** _You can fork this repository by clicking "fork" in the top right._
+***NOTE:*** _You can fork this repository by clicking "fork" in the top right. Be sure to read [docs/FORKNOTES.md](https://github.com/leshacat/EasyNOMP/blob/paymentprocessor-patch-1/docs/FORKNOTES.md)_
 
 -------
 
@@ -44,18 +44,30 @@ Once fixed, I will push the fix to parent project [1301313Y/BootNOMP](https://gi
 ***NOTE:***  Someone please test Docker, I made a few quick changes. Will come back to it later! ~LeshaCat
 
 -------
+### !~ NOTICE: THIS IS NOT A HOSTILE TAKEOVER ~!
+It has been posited to me that EasyNOMP is a hostile takeover of [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) or [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal).
+
+**I want to be perfectly clear, this is not a hostile takeover of either of these two projects.**
+
+EasyNOMP, BootNOMP and NOMP are preferences. The only way EasyNOMP differs from BootNOMP is the added documentation, while the only way BootNOMP differs from NOMP is the UI redesign. All fixes, features, and patches will be shared with both [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) - provided they are features they want.
+
+**If you've installed EasyNOMP because you want the features, bug fixes and patches that I (LeshaCat) make, you have installed it for the wrong reason. Go install the parent projects. I will be supporting and working for them as well, and pushing the fixes, features, and patches to them as soon as they are completed - as long as they want them.**
+
+While I am open to a takeover with the original developers consent, **_I am not_** open to hostile takeovers of projects which I am friendly with and share source code. We are here (or at least I am) to help make crypto and open source **stronger.**
+
+-------
 ### Features
 |   | Feature | Developer(s) |
 | ------------- | ------------- | ------------- |
+| **✓** | **Support for 43 Algorithms** / Such hashing, much blocks! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
 | **✓** | **Patches pulled from everywhere** / To keep EasyNOMP working, up to date, and secure! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Install Script** / No dependancy problems! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Support for 43 Algorithms** / Such hashing, much blocks! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
 | **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
 | **✓** | **Algorithm Auto-Switching** / To keep you making profit! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
 | **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
 | **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
 
 [Screenshots](https://github.com/leshacat/EasyNOMP#screenshots)<br />
 [Credits](https://github.com/leshacat/EasyNOMP#credits)

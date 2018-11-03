@@ -65,9 +65,50 @@ function SetupForPool(poolOptions, setupFinished) {
   var processingConfig = poolOptions.paymentProcessing;
 
 
-  var daemon = new Stratum.daemon.interface([processingConfig.daemon], loggerFactory.getLogger('CoinDaemon', coin));
 
-  var redisClient = redis.createClient(poolOptions.redis.port, poolOptions.redis.host);
+
+	var opidCount = 0;
+    var opids = [];
+
+    // zcash team recommends 10 confirmations for safety from orphaned blocks
+    var minConfShield = Math.max((processingConfig.minConf || 10), 1); // Don't allow 0 conf transactions.
+    var minConfPayout = Math.max((processingConfig.minConf || 10), 1);
+    if (minConfPayout  < 3) {
+        logger.warning(logSystem, logComponent, logComponent + ' minConf of 3 is recommended.');
+    }
+
+    // minimum paymentInterval of 60 seconds
+    var paymentIntervalSecs = Math.max((processingConfig.paymentInterval || 120), 30);
+    if (parseInt(processingConfig.paymentInterval) < 120) {
+        logger.warning(logSystem, logComponent, ' minimum paymentInterval of 120 seconds recommended.');
+    }
+    
+    var maxBlocksPerPayment =  Math.max(processingConfig.maxBlocksPerPayment || 3, 1);
+    
+    // pplnt - pay per last N time shares
+    var pplntEnabled = processingConfig.paymentMode === "pplnt" || false;
+    var pplntTimeQualify = processingConfig.pplnt || 0.51; // 51%
+    
+    var getMarketStats = poolOptions.coin.getMarketStats === true;
+    var requireShielding = poolOptions.coin.requireShielding === true;
+    var fee = parseFloat(poolOptions.coin.txfee) || parseFloat(0.0004);
+
+    logger.debug(logSystem, logComponent, logComponent + ' requireShielding: ' + requireShielding);
+    logger.debug(logSystem, logComponent, logComponent + ' minConf: ' + minConfShield);
+    logger.debug(logSystem, logComponent, logComponent + ' payments txfee reserve: ' + fee);
+    logger.debug(logSystem, logComponent, logComponent + ' maxBlocksPerPayment: ' + maxBlocksPerPayment);
+    logger.debug(logSystem, logComponent, logComponent + ' PPLNT: ' + pplntEnabled + ', time period: '+pplntTimeQualify);
+    
+    
+
+	var daemon = new Stratum.daemon.interface([processingConfig.daemon], loggerFactory.getLogger('CoinDaemon', coin));
+
+	var redisClient = redis.createClient(poolOptions.redis.port, poolOptions.redis.host);
+	// redis auth if enabled
+	if (poolOptions.redis.password) {
+	    redisClient.auth(poolOptions.redis.password);
+	}
+
 
   var minPayment;
 
@@ -804,6 +845,14 @@ function SetupForPool(poolOptions, setupFinished) {
 					5) Send each "mini-batch" of transactions					
 																									// (, false, "Miner Payment", feeAddresses, true, false)
 			*/
+			
+			
+			// do final rounding of payments per address
+            // this forces amounts to be valid (0.12345678)
+/*            for (var a in addressAmounts) {
+                addressAmounts[a] = coinsRound(addressAmounts[a]);
+            }*/
+			
 			
 			var tmpBatchTxAddresses = [];
 			var txCtr = 0; 			
