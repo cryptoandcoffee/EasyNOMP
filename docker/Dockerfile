@@ -1,13 +1,13 @@
-FROM node:latest
+FROM ubuntu:16.04
 RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get dist-upgrade -y
+RUN apt-get upgrade -yqq
+RUN apt-get dist-upgrade -yqq
 RUN apt-get install -y sudo git nano wget curl ntp build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev git npm nodejs nodejs-legacy libminiupnpc-dev redis-server software-properties-common fail2ban
 
 
 RUN add-apt-repository ppa:bitcoin/bitcoin
 RUN apt-get update
-RUN apt-get install libdb4.8-dev libdb4.8++-dev
+RUN apt-get install -yqq libdb4.8-dev libdb4.8++-dev
 RUN systemctl enable redis-server
 RUN systemctl start redis-server
 RUN systemctl enable fail2ban
